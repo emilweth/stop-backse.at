@@ -1,24 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    <main id="swup" class="uk-position-cover uk-light uk-background-secondary">
-        <div class="uk-position-center">
-            <div class="uk-tile uk-tile-secondary">
-                <div class="uk-text-lead">
-                    {{ 'what_is_backseat' | trans }} ?
-                </div>
-                <p>
-                    {{ 'backseat_definition' | trans }}
-                </p>
-                <blockquote cite="you">
-                    {{ 'backseat_quote' | trans }}
-                </blockquote>
-                <div>
-                    <a class="uk-button uk-button-default uk-button-small"
-                       href="{{ path('i_did_not') }}">
-                        {{ 'was_not_backseat' | trans }}
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
+    <h1 class="uk-heading-primary" style="font-weight: 700;">
+        {{ 'what_is_backseat' | trans }} ?
+    </h1>
+    <div class="uk-width-4-5@m uk-margin-auto">
+        <p class="lead">
+            {{ 'backseat_definition' | trans }}
+        </p>
+        <blockquote cite="you">
+            {{ 'backseat_quote' | trans }}
+        </blockquote>
+    </div>
+    <div class="uk-margin-medium-top animate uk-invisible" data-uk-margin>
+        <a class="uk-button uk-button-primary uk-button-large uk-width-2-3 uk-width-auto@s"
+           data-uk-icon="check"
+           title="Learn More"
+           href="{{ path('i_did_not') }}">
+            {{ 'was_not_backseat' | trans }}
+        </a>
+    </div>
 {% endblock %}
