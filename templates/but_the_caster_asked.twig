@@ -1,31 +1,28 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    <main id="swup" class="uk-position-cover uk-light uk-background-secondary">
-        <div class="uk-position-center">
-            <div class="uk-tile uk-tile-secondary">
-                <div class="uk-text-lead">
-                    {{ 'caster_asked' | trans }}
-                </div>
-                <p>
-                    {{ 'caster_asked.paragraph_1' | trans }}
-                </p>
-                <p>
-                    {{ 'caster_asked.paragraph_2' | trans }}
-                </p>
-            </div>
-            <div class="uk-tile uk-tile-secondary">
-                <p>
-                    {{ 'do_you_understand' | trans }} <br/>
-                    <em class="uk-text-meta">
-                        {{ 'require_twitch_login' | trans }}
-                    </em>
-                </p>
-                <a class="uk-button uk-button-default uk-button-small"
-                   href="{{ path('i_understand') }}">
-                    {{ 'i_understand' | trans }}
-                </a>
-            </div>
-        </div>
-        </div>
-    </main>
+    <h1 class="uk-heading-primary" style="font-weight: 700;">
+        {{ 'caster_asked' | trans }}
+    </h1>
+    <div class="uk-width-4-5@m uk-margin-auto">
+        <p class="lead">
+            {{ 'caster_asked.paragraph_1' | trans }}
+        </p>
+        <p class="lead">
+            {{ 'caster_asked.paragraph_2' | trans }}
+        </p>
+    </div>
+    <div class="uk-margin-medium-top animate uk-invisible" data-uk-margin>
+        <p>
+            {{ 'do_you_understand' | trans }} <br/>
+            <em class="uk-text-meta">
+                {{ 'require_twitch_login' | trans }}
+            </em>
+        </p>
+        <a class="uk-button uk-button-primary uk-button-large uk-width-2-3 uk-width-auto@s"
+           data-uk-icon="check"
+           title="Learn More"
+           href="{{ path('i_understand') }}">
+            {{ 'i_understand' | trans }}
+        </a>
+    </div>
 {% endblock %}
