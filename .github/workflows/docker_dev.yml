@@ -1,4 +1,4 @@
-name: Docker
+name: Docker build&push dev version
 
 on:
   workflow_dispatch: {}
