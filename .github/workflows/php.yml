@@ -32,4 +32,4 @@ jobs:
           run: vendor/bin/phpstan -n analyse src/
 
       -   name: php-cs-fixer code quality check
-          run: vendor/bin/php-cs-fixer fix --config=./.php_cs.php -v --dry-run --stop-on-violation --using-cache=no
+          run: vendor/bin/php-cs-fixer fix --config=./.php_cs.dist -v --dry-run --stop-on-violation --using-cache=no
