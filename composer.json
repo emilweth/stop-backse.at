@@ -1,4 +1,6 @@
 {
+    "name": "emilweth/stop-backse.at",
+    "description": "stop-backse.at website",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",
