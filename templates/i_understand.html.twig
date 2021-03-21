@@ -1,44 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    <main id="swup" class="uk-position-cover uk-light uk-background-secondary">
-        <div class="uk-position-center uk-text-center">
-            <div class="uk-tile uk-tile-secondary">
-                <div class="uk-text-lead">
-                    {{ 'thank_you' | trans({'%user%' : user_name}) }}
-                </div>
+    <h1 class="uk-heading-primary" style="font-weight: 700;">
+        {{ 'thank_you' | trans({'%user%' : user_name}) }}
+    </h1>
+    <div class="uk-width-4-5@m uk-margin-auto">
+        {% if  last_users is not empty %}
+            <div class="uk-text-meta">
+                {{ 'also_thanks' | trans }}:
             </div>
-            {% if  last_users is not empty %}
-                <div class="uk-text-meta">
-                    {{ 'also_thanks' | trans }}:
-                </div>
-                <br/>
-                <div>
-                    <ul class="uk-list">
-                        {% for user in last_users %}
-                            <li>
-                                <a href="https://twitch.tv/{{ user.username }}" target="_blank">
-                                    {{ user.displayedUsername }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                        <li>
-                            ...
-                        </li>
-                    </ul>
-                </div>
-            {% endif %}
+            <br/>
             <div>
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-                   class="twitter-share-button"
-                   data-size="large"
-                   data-text="{{ 'tweet_text' | trans }}"
-                   data-url="https://stop-backse.at/"
-                   data-related="emilweth"
-                   data-dnt="true"
-                   data-show-count="false">Tweet</a>
+                <ul class="uk-list">
+                    {% for user in last_users %}
+                        <li>
+                            <a href="https://twitch.tv/{{ user.username }}" target="_blank">
+                                {{ user.displayedUsername }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    <li>
+                        ...
+                    </li>
+                </ul>
             </div>
+        {% endif %}
+    </div>
+    <div class="uk-margin-medium-top animate uk-invisible" data-uk-margin>
+        <div>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+               class="twitter-share-button"
+               data-size="large"
+               data-text="{{ 'tweet_text' | trans }}"
+               data-url="https://stop-backse.at/"
+               data-related="emilweth"
+               data-dnt="true"
+               data-show-count="false">Tweet</a>
         </div>
-    </main>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
