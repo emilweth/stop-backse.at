@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -24,7 +26,6 @@ class User implements UserInterface
      */
     private ?string $twitchId;
 
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -45,9 +46,10 @@ class User implements UserInterface
      */
     private string $twitchToken;
 
-
     /**
      * @ORM\Column(type="json")
+     *
+     * @var array<string>
      */
     private array $roles = [];
 
@@ -68,16 +70,13 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string)$this->username;
+        return $this->username;
     }
 
-    /**
-     * @param string $username
-     * @return User
-     */
-    public function setUsername(string $username): User
+    public function setUsername(string $username): self
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -93,6 +92,9 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array<string> $roles
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -112,66 +114,50 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDisplayedUsername(): string
     {
         return $this->displayedUsername;
     }
 
-    /**
-     * @param string $displayedUsername
-     * @return User
-     */
-    public function setDisplayedUsername(string $displayedUsername): User
+    public function setDisplayedUsername(string $displayedUsername): self
     {
         $this->displayedUsername = $displayedUsername;
+
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getAvatar(): string
     {
         return $this->avatar;
     }
 
-    /**
-     * @param string $avatar
-     * @return User
-     */
-    public function setAvatar(string $avatar): User
+    public function setAvatar(string $avatar): self
     {
         $this->avatar = $avatar;
+
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getTwitchToken(): string
     {
         return $this->twitchToken;
     }
 
-    /**
-     * @param string $twitchToken
-     * @return User
-     */
-    public function setTwitchToken(string $twitchToken): User
+    public function setTwitchToken(string $twitchToken): self
     {
         $this->twitchToken = $twitchToken;
+
         return $this;
     }
 
-    public function getPassword(): void
+    public function getPassword(): ?string
     {
+        return null;
     }
 
-    public function getSalt(): void
+    public function getSalt(): ?string
     {
+        return null;
     }
 
     public function eraseCredentials(): void

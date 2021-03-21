@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +13,7 @@ class RootController extends AbstractController
     public function root(Request $request): RedirectResponse
     {
         return $this->redirectToRoute('home', [
-            '_locale' => ($request->getLocale() === 'fr' ? 'fr' : 'en')
+            '_locale' => ('fr' === $request->getLocale() ? 'fr' : 'en'),
         ]);
     }
 }
