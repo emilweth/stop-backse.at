@@ -1,4 +1,4 @@
-FROM registry.jevil.emi.cool/symfony-app-php:8.0
+FROM ghcr.io/emilweth/symfony:8.0
 
 # persistent / runtime deps
 RUN apk add --no-cache \
