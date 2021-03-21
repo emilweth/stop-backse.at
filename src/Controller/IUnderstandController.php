@@ -26,7 +26,7 @@ class IUnderstandController extends AbstractController
         $this->svc->userUnderstood($user);
 
         return $this->render('i_understand.html.twig', [
-            'user_name' => $this->getUser()->getUsername(),
+            'user_name' => $user->getUsername(),
             'last_users' => $this->svc->getLastUnderstoodUsers(10, $user),
         ]);
     }

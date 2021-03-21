@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Service;
 
 use JetBrains\PhpStorm\ArrayShape;
-use JsonException;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -37,14 +36,14 @@ class TwitchUserService
     }
 
     /**
-     * @param $token
-     *
-     * @throws JsonException
+     * @throws \JsonException
      * @throws TransportExceptionInterface
      * @throws TwitchApiException
+     *
+     * @return array<string, string>
      */
     #[ArrayShape(['twitchId' => 'mixed', 'twitchLogin' => 'mixed', 'twitchDisplayname' => 'mixed', 'twitchProfileUrl' => 'mixed'])]
-    public function fetchUserByBearerToken($token): array
+    public function fetchUserByBearerToken(string $token): array
     {
         $url = 'https://api.twitch.tv/helix/users';
         $headers = [

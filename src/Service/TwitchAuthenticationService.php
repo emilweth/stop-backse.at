@@ -61,7 +61,7 @@ class TwitchAuthenticationService
      */
     public function authorizeUrl(): string
     {
-        $this->sessionInterface->set('loginToken', md5(random_int(\PHP_INT_MIN, \PHP_INT_MAX)));
+        $this->sessionInterface->set('loginToken', md5((string) random_int(\PHP_INT_MIN, \PHP_INT_MAX)));
 
         $params = http_build_query([
             'client_id' => $this->clientId,

@@ -1,0 +1,7 @@
+parameters:
+    symfony:
+        container_xml_path: 'var/cache/dev/App_KernelDevDebugContainer.xml'
+    level: 7
+    excludes_analyse:
+        - src/Kernel.php
+    checkGenericClassInNonGenericObjectType: false

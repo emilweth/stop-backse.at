@@ -21,7 +21,10 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function findLast(int $max, User $except)
+    /**
+     * @return array<User>
+     */
+    public function findLast(int $max, User $except): array
     {
         $qb = $this->createQueryBuilder('u');
 

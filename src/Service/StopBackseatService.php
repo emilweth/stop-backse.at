@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class StopBackseatService
@@ -23,9 +24,15 @@ class StopBackseatService
         }
     }
 
-    public function getLastUnderstoodUsers(int $max, User $except = null)
+    /**
+     * @return array<User>
+     */
+    public function getLastUnderstoodUsers(int $max, User $except = null): array
     {
-        return $this->em->getRepository(User::class)
+        /** @var UserRepository $repository */
+        $repository = $this->em->getRepository(User::class);
+
+        return $repository
             ->findLast($max, $except)
         ;
     }

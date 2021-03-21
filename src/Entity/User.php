@@ -48,6 +48,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="json")
+     *
+     * @var array<string>
      */
     private array $roles = [];
 
@@ -68,7 +70,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->username;
+        return $this->username;
     }
 
     public function setUsername(string $username): self
@@ -90,6 +92,9 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array<string> $roles
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -145,12 +150,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPassword(): void
+    public function getPassword(): ?string
     {
+        return null;
     }
 
-    public function getSalt(): void
+    public function getSalt(): ?string
     {
+        return null;
     }
 
     public function eraseCredentials(): void

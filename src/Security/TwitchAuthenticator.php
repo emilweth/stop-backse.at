@@ -9,6 +9,7 @@ use Depotwarehouse\OAuth2\Client\Twitch\Entity\TwitchUser;
 use Depotwarehouse\OAuth2\Client\Twitch\Provider\Twitch;
 use Doctrine\ORM\EntityManagerInterface;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
@@ -57,6 +58,9 @@ class TwitchAuthenticator extends AbstractGuardAuthenticator
         return false;
     }
 
+    /**
+     * @return null|array<string,null|string>
+     */
     public function getCredentials(Request $request): ?array
     {
         return $request->query->has('code') && $request->query->has('state') ? [
@@ -68,6 +72,7 @@ class TwitchAuthenticator extends AbstractGuardAuthenticator
     public function getUser($credentials, UserProviderInterface $userProvider): User
     {
         try {
+            /** @var AccessToken $token */
             $token = $this->provider->getAccessToken('authorization_code', [
                 'code' => $credentials['code'],
             ]);
@@ -84,7 +89,7 @@ class TwitchAuthenticator extends AbstractGuardAuthenticator
             ])
         ;
 
-        if (!$user) {
+        if (null === $user) {
             $user = new User();
         }
 
@@ -112,9 +117,10 @@ class TwitchAuthenticator extends AbstractGuardAuthenticator
         return new RedirectResponse($this->router->generate('but_the_caster_asked'));
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): RedirectResponse
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+        $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
+        if ('' !== $targetPath) {
             return new RedirectResponse($targetPath);
         }
 
