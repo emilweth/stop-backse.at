@@ -11,7 +11,7 @@ home:
     _locale: en|fr
 
 what_is_backseat:
-  path: /{_locale}/what
+  path: /{_locale}/what-is-backseat
   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
   defaults:
     template: what_is_backseat.html.twig
@@ -19,7 +19,7 @@ what_is_backseat:
     _locale: en|fr
 
 i_did_not:
-  path: /{_locale}/i-did-not
+  path: /{_locale}/but-i-never-played-that-game
   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
   defaults:
     template: never_played.twig
@@ -27,7 +27,7 @@ i_did_not:
     _locale: en|fr
 
 but_the_caster_asked:
-  path: /{_locale}/but-the-caster-asked
+  path: /{_locale}/but-the-streamer-asked
   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
   defaults:
     template: but_the_caster_asked.twig
@@ -35,7 +35,7 @@ but_the_caster_asked:
     _locale: en|fr
 
 i_understand:
-  path: /{_locale}/i-understand
+  path: /{_locale}/thank-you
   controller: App\Controller\IUnderstandController:index
   requirements:
     _locale: en|fr
