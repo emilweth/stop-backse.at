@@ -18,12 +18,30 @@
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </head>
-<body class="uk-height-1-1"
-      data-controller="myswup symfony--ux-swup--swup"
+<body data-controller="myswup symfony--ux-swup--swup"
       data-animate-history-browsing="data-animate-history-browsing">
-{% block content %}{% endblock %}
-{% block footer %}
-    {% include 'elements/footer.html.twig' %}
-{% endblock %}
+
+<div class="uk-light wrap uk-background-norepeat uk-background-cover uk-background-center-center uk-cover-container uk-background-secondary">
+    <img data-srcset="https://picsum.photos/640/700/?image=1019 640w,
+                   https://picsum.photos/960/700/?image=1019 960w,
+                   https://picsum.photos/1200/900/?image=1019 1200w,
+                   https://picsum.photos/2000/1000/?image=1019 2000w"
+         sizes="100vw"
+         data-src="https://picsum.photos/1200/900/?image=482" alt="" data-uk-cover data-uk-img
+         src="https://picsum.photos/1200/900/?image=482">
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-height-viewport uk-position-z-index uk-position-relative"
+         data-uk-height-viewport="min-height: 400" style="background-color: rgba(0, 0, 0, 0.5);">
+
+        <div id="swup"
+                class="uk-container uk-container-small uk-flex-auto uk-text-center"
+             data-uk-scrollspy="target: > .animate; cls: uk-animation-slide-bottom-small uk-invisible; delay: 300">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% block footer %}
+            {% include 'elements/footer.html.twig' %}
+        {% endblock %}
+    </div>
+</div>
 </body>
 </html>
