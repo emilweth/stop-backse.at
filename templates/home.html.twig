@@ -1,36 +1,25 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    <main id="swup" class="uk-position-cover uk-light">
-        <div class="uk-position-center">
-            <div class="uk-grid-column-medium uk-grid-row-medium uk-text-center">
-                <div>
-                    <div class="uk-tile">
-                        <div class="uk-text-lead">
-                            {{ 'stop_backseat' | trans }}
-                        </div>
-                        <div class="uk-text-meta">
-                            {{ 'please' | trans }}
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <div>
-                            <a class="uk-button uk-button-default uk-button-small"
-                               href="{{ path('what_is_backseat') }}">
-                                {{ 'what_is_backseat' | trans }} ?
-                            </a>
-                        </div>
-                        <br/>
-                        <div>
-                            <a class="uk-button uk-button-default uk-button-small"
-                               href="{{ path('i_did_not') }}">
-                                {{ 'was_not_backseat' | trans }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+    <h1 class="uk-heading-primary animate uk-invisible" style="font-weight: 700;">{{ 'stop_backseat' | trans }}</h1>
+    <div class="uk-width-4-5@m uk-margin-auto animate uk-invisible">
+        <p class="lead">
+            {{ 'please' | trans }}
+        </p>
+    </div>
+    <div class="uk-margin-medium-top animate uk-invisible" data-uk-margin
+         data-uk-scrollspy-class="uk-animation-fade uk-invisible">
+        <a class="uk-button uk-button-primary uk-button-large uk-width-2-3 uk-width-auto@s"
+           data-uk-icon="arrow-right"
+           title="Learn More"
+           href="{{ path('what_is_backseat') }}">
+            {{ 'what_is_backseat' | trans }} ?
+        </a>
+        <br />
+        <a class="uk-button uk-button-default uk-button-large uk-width-2-3 uk-width-auto@s"
+           data-uk-icon="check"
+           title="Learn More"
+           href="{{ path('i_did_not') }}">
+            {{ 'was_not_backseat' | trans }}
+        </a>
+    </div>
 {% endblock %}
