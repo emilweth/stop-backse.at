@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventSubscriber;
 
 use JetBrains\PhpStorm\ArrayShape;
@@ -18,7 +20,7 @@ class LocaleSubscriber implements EventSubscriberInterface
         }
     }
 
-    #[ArrayShape(['kernel.request' => "string"])]
+    #[ArrayShape(['kernel.request' => 'string'])]
     public static function getSubscribedEvents(): array
     {
         return [

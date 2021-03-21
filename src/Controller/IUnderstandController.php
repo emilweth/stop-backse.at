@@ -1,25 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Repository\UserRepository;
 use App\Service\StopBackseatService;
-use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 class IUnderstandController extends AbstractController
 {
-
     public function __construct(public StopBackseatService $svc)
     {
     }
 
     /**
      * @IsGranted("ROLE_USER")
-     * @return Response
      */
     public function index(): Response
     {
